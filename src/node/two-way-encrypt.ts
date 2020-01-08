@@ -1,8 +1,8 @@
-import crypto from 'crypto';
+import { randomBytes, createDecipheriv, createCipheriv } from 'crypto';
 
 export function encrypt(text: string, secret: string, algorithm = 'aes-256-cbc', iv_length = 16): string {
-  const iv = crypto.randomBytes(iv_length);
-  const cipher = crypto.createCipheriv(algorithm, Buffer.from(secret), iv);
+  const iv = randomBytes(iv_length);
+  const cipher = createCipheriv(algorithm, Buffer.from(secret), iv);
   let encrypted = cipher.update(text);
 
   encrypted = Buffer.concat([encrypted, cipher.final()]);
@@ -14,7 +14,7 @@ export function decrypt(text: string, secret: string, algorithm = 'aes-256-cbc')
   const textParts = text.split(':');
   const iv = Buffer.from(textParts.shift(), 'hex');
   const encryptedText = Buffer.from(textParts.join(':'), 'hex');
-  const decipher = crypto.createDecipheriv(algorithm, Buffer.from(secret), iv);
+  const decipher = createDecipheriv(algorithm, Buffer.from(secret), iv);
 
   let decrypted = decipher.update(encryptedText);
 

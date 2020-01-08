@@ -6,12 +6,14 @@ module.exports = {
     'jest',
     "react-hooks",
     'import',
+    'json',
     'promise',
     'react',
     'lodash-fp',
     'react-native'
   ],
   extends: [
+    'plugin:json/recommended',
     'eslint:recommended',
     'airbnb-typescript',
     'plugin:react/recommended',

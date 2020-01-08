@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const intervals = {};
 
@@ -28,19 +28,24 @@ export const sharedSetInterval = <T>(cb: (now: number) => T, ms: number): Unsubs
   };
 };
 
-export const useUpdateInterval = <T>(render: (now: number) => T, ms: number): T => {
-  const [value, setValue] = useState(render(Date.now()));
+const useUpdateInterval = <T>(updaterFn: (now: number) => T, ms: number): T => {
+  const [value, setValue] = useState(updaterFn(Date.now()));
+  const updater = useRef(updaterFn);
+
+  useEffect(() => {
+    updater.current = updaterFn;
+  }, [updaterFn]);
 
   useEffect(() => {
     if (Number.isFinite(ms)) {
       const cb = (now): void => {
-        setValue(render(now));
+        setValue(updater.current(now));
       };
       const unsubscribe = sharedSetInterval(cb, ms);
       return (): void => unsubscribe();
     }
     return (): void => {};
-  }, [ms, render]);
+  }, [ms]);
 
   return value;
 };

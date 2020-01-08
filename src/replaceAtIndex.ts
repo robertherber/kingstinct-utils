@@ -1,4 +1,4 @@
-function replaceAtIndex<T>(array: Array<T>, index: number, value: T): Array<T> {
+function replaceAtIndex<T>(index: number, value: T, array: Array<T>): Array<T> {
   return Object.assign([], array, { [index]: value });
 }
 

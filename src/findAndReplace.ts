@@ -1,13 +1,15 @@
 import replaceAtIndex from './replaceAtIndex';
 
-// type replaceWithType = <T>;
-
-function findAndReplace<T>(array: Array<T>, compare: (T) => boolean, replaceWith: T): Array<T> {
-  const index = array.findIndex(compare);
+function findAndReplace<T>(
+  findPredicate: (T) => boolean,
+  replaceWith: (T | ((T) => T)),
+  array: Array<T>,
+): Array<T> {
+  const index = array.findIndex(findPredicate);
 
   if (index > -1) {
     const newObj = replaceWith instanceof Function ? replaceWith(array[index]) : replaceWith;
-    return replaceAtIndex(array, index, newObj);
+    return replaceAtIndex(index, newObj, array);
   }
 
   return array;
