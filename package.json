@@ -10,10 +10,10 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "prepublish": "yarn build",
+    "release": "yarn build && cd lib && yarn publish -f",
     "test": "yarn lint && jest src && tsc --noEmit",
     "lint": "eslint ./src/**/*.ts",
-    "build": "rimraf lib && tsc && tsc -p tsconfig.node.json"
+    "build": "rimraf lib && tsc && tsc -p tsconfig.node.json && copy README.md lib && copy yarn.lock lib && copy package.json lib"
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^3.2.1",

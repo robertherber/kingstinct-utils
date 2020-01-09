@@ -1,4 +1,5 @@
 tsconfig.json
 src
-*.test.d.ts
-*.test.js
+**/*.test.d.ts
+**/*.test.js
+node_modules
