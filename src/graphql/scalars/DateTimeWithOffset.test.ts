@@ -1,7 +1,7 @@
 import { Kind } from 'graphql/language';
 import { GraphQLError } from 'graphql/error';
 
-import GraphQLDateTimeWithOffset from './GraphQLDateTimeWithOffset';
+import GraphQLDateTimeWithOffset from './DateTimeWithOffset';
 
 
 const { parseValue, parseLiteral, serialize } = GraphQLDateTimeWithOffset;

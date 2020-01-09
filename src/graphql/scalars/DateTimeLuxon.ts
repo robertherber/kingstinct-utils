@@ -32,9 +32,9 @@ const parseLiteral = (ast: ValueNode): DateTime => {
   return parseValue(v);
 };
 
-const GraphQLDateTimeLuxon = new GraphQLScalarType({
-  name: 'GraphQLDateTimeLuxon',
-  description: 'GraphQLDateTimeLuxon accepts Dates in ISO 8601 format and parses them to Luxon DateTime instances',
+const GraphQLDateTimeLuxonScalar = new GraphQLScalarType({
+  name: 'DateTimeLuxon',
+  description: 'DateTimeLuxon accepts Dates in ISO 8601 format and parses them to Luxon DateTime instances',
 
   // from database towards client
   serialize,
@@ -46,4 +46,4 @@ const GraphQLDateTimeLuxon = new GraphQLScalarType({
   parseLiteral,
 });
 
-export default GraphQLDateTimeLuxon;
+export default GraphQLDateTimeLuxonScalar;

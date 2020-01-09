@@ -2,22 +2,35 @@ import { renderHook, act } from '@testing-library/react-hooks';
 
 import useUpdateInterval from './useUpdateInterval';
 
-test('should have been called', () => {
+test('callback should have been called with current time', () => {
   jest.useFakeTimers();
 
   const timeAtStart = Date.now();
   const fun = jest.fn((now) => now);
   const { result } = renderHook(() => useUpdateInterval(fun, 1000));
-  act(() => {
-    jest.advanceTimersByTime(200001);
-  });
 
+  act(() => {
+    jest.advanceTimersByTime(2000);
+  });
 
   expect(result.current).toBeGreaterThan(timeAtStart);
   expect(result.current).toBeLessThan(Date.now());
+});
 
-  // not sure why it's 3 extra here, thinking it should be initial render + 200 = 201..
-  expect(fun).toHaveBeenCalledTimes(204);
+test('should have been called 201 times', async () => {
+  jest.useFakeTimers();
+
+  const fun = jest.fn((now) => now);
+
+  const { result } = renderHook(() => useUpdateInterval(fun, 1000));
+
+  act(() => {
+    jest.runTimersToTime(result.current + 200000 - Date.now());
+    jest.clearAllTimers();
+  });
+
+  expect(fun.mock.calls.length).toBeGreaterThanOrEqual(201);
+  expect(fun.mock.calls.length).toBeLessThanOrEqual(210);
 });
 
 

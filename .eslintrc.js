@@ -36,6 +36,7 @@ module.exports = {
     'lodash-fp/use-fp': 2,
     'global-require': 1,
     'max-depth': [1, 3],
+    'no-nested-ternary': 0,
     'no-mixed-operators': [
       'error',
       {

@@ -10,9 +10,10 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "prepublish": "tsc && tsc -p tsconfig.node.json",
+    "prepublish": "yarn build",
     "test": "yarn lint && jest src && tsc --noEmit",
-    "lint": "eslint ./src/**/*.ts"
+    "lint": "eslint ./src/**/*.ts",
+    "build": "rimraf lib && tsc && tsc -p tsconfig.node.json"
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^3.2.1",
@@ -30,6 +31,7 @@
     "eslint-plugin-react-native": "^3.8.1",
     "jest": "^24.9.0",
     "react-test-renderer": "^16.12.0",
+    "rimraf": "^3.0.0",
     "ts-jest": "^24.3.0",
     "typescript": "3"
   },
@@ -40,8 +42,13 @@
     "@types/react": "^16.9.17",
     "@typescript-eslint/eslint-plugin": "^2.14.0",
     "@typescript-eslint/parser": "^2.14.0",
+    "email-regex": "^4.0.0",
     "graphql": "^14.5.8",
+    "is-my-date-valid": "^0.1.0",
     "luxon": "^1.21.3",
-    "react": "^16.12.0"
+    "mongodb": "^3.4.1",
+    "react": "^16.12.0",
+    "url-regex": "^5.0.0",
+    "validate-color": "^1.0.3"
   }
 }

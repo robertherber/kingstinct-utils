@@ -1,9 +1,9 @@
-import { GraphQLScalarType } from 'graphql';
+import { GraphQLScalarType } from 'graphql/type';
 import { Kind, ValueNode } from 'graphql/language';
 import { GraphQLError } from 'graphql/error';
 import { DateTime, FixedOffsetZone } from 'luxon';
 
-import GraphQLDateTimeLuxon from './GraphQLDateTimeLuxon';
+import GraphQLDateTimeLuxon from './DateTimeLuxon';
 
 type DateTimeWithOffset = { date: Date; offset: number };
 
@@ -53,9 +53,9 @@ const parseLiteral = (ast: ValueNode): DateTimeWithOffset => {
   return parseValue(v);
 };
 
-const GraphQLDateTimeWithOffset = new GraphQLScalarType({
-  name: 'GraphQLDateTimeWithOffset',
-  description: 'GraphQLDateTimeWithOffset accepts Dates in ISO 8601 format and parses them to { date: Date, offset: Number } format',
+const GraphQLDateTimeWithOffsetScalar = new GraphQLScalarType({
+  name: 'DateTimeWithOffset',
+  description: 'DateTimeWithOffset accepts Dates with timezone info in ISO 8601 format and parses them to { date: Date, offset: Number } format',
 
   // from database towards client
   serialize,
@@ -67,4 +67,4 @@ const GraphQLDateTimeWithOffset = new GraphQLScalarType({
   parseLiteral,
 });
 
-export default GraphQLDateTimeWithOffset;
+export default GraphQLDateTimeWithOffsetScalar;
