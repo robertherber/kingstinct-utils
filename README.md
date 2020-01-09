@@ -1,14 +1,19 @@
-# kingstinct utils
+# Kingstinct Utility Library
 
-Collection of reusable code with TypeScript bindings. No global imports to avoid bloating bundle sizes and mixing up different targets.
+Collection of reusable code with TypeScript bindings.
+
+Main ideas:
+* Add generic pieces of code that are reused in many projects
+* Minimal amount of dependencies, where needed try to use light dependencies
+* Allow tree for shaking as much as possible
 
 ## Install
 
-js`yarn add kingstinct`
+`yarn add kingstinct`
 
 or
 
-js`npm install kingstinct`
+`npm install kingstinct`
 
 ## Usage
 
@@ -16,4 +21,6 @@ js`npm install kingstinct`
 import DateTimeWithOffset from 'kingstinct/graphql/scalars/DateTimeWithOffset'
 import useUpdateInterval from 'kingstinct/hooks/useUpdateInterval'
 import findAndReplace from 'kingstinct/findAndReplace'
+
+...
 ```
