@@ -12,8 +12,8 @@ const GraphQLURLScalar = ScalarFactory(
   'URL',
   'Represents a URL which is forced to start with a valid protocol',
   validateUrl,
-  (url: string) => url.toString(),
-  (url: string) => url.toLowerCase(),
+  (url: string) => url,
+  (url: string) => url,
 );
 
 export default GraphQLURLScalar;
