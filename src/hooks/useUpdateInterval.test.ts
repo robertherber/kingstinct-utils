@@ -17,7 +17,7 @@ test('callback should have been called with current time', () => {
   expect(result.current).toBeLessThan(Date.now());
 });
 
-test('should have been called 201 times', async () => {
+test('should have been called 201 times', () => {
   jest.useFakeTimers();
 
   const fun = jest.fn((now) => now);

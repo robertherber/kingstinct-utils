@@ -1,6 +1,9 @@
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: `./tsconfig.json`
+  },
   plugins: [
     '@typescript-eslint',
     'jest',
@@ -16,9 +19,11 @@ module.exports = {
     'plugin:json/recommended',
     'eslint:recommended',
     'airbnb-typescript',
+    'airbnb/hooks',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:jest/recommended',
   ],
   rules: {
