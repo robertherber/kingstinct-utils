@@ -5,12 +5,15 @@
   "repository": "https://github.com/robertherber/kingstinct-utils",
   "author": "Robert Herber <robert@herber.me>",
   "license": "MIT",
+  "bin": {
+    "fix-no-space-left-on-device": "./scripts/docker/fix-no-space-left-on-device.sh"
+  },
   "private": false,
   "scripts": {
     "release": "yarn build && cd lib && yarn publish -f",
     "test": "yarn lint && jest src && tsc --noEmit",
     "lint": "eslint ./src/**/*.ts",
-    "build": "rimraf lib && tsc && tsc -p tsconfig.node.json && copy README.md lib && copy yarn.lock lib && copy package.json lib"
+    "build": "rimraf lib && tsc && tsc -p tsconfig.node.json && copy README.md lib && copy yarn.lock lib && copy package.json lib && copy scripts lib"
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^3.2.1",
