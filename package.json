@@ -1,23 +1,25 @@
 {
   "name": "kingstinct",
-  "version": "0.0.5",
+  "version": "0.0.8",
   "description": "Common utils usable across many projects",
   "repository": "https://github.com/robertherber/kingstinct-utils",
   "author": "Robert Herber <robert@herber.me>",
   "license": "MIT",
   "bin": {
-    "fix-no-space-left-on-device": "./scripts/docker/fix-no-space-left-on-device.sh"
+    "fix-no-space-left-on-device": "./scripts/docker/fix-no-space-left-on-device.sh",
+    "pushover": "./scripts/pushover-cli.js"
   },
   "private": false,
   "scripts": {
-    "release": "yarn build && cd lib && yarn publish -f",
+    "release": "yarn build && npm publish lib",
     "test": "yarn lint && jest src && tsc --noEmit",
     "lint": "eslint ./src/**/*.ts",
-    "build": "rimraf lib && tsc && tsc -p tsconfig.node.json && copy README.md lib && copy yarn.lock lib && copy package.json lib && copy scripts lib"
+    "build": "rimraf lib && tsc && tsc -p tsconfig.node.json && copy README.md lib && copy yarn.lock lib && copy package.json lib && copy scripts/**/* lib"
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^3.2.1",
     "@types/jest": "^24.0.25",
+    "copy": "^0.3.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-typescript": "^6.3.1",
     "eslint-plugin-import": "^2.19.1",
@@ -44,11 +46,13 @@
     "@typescript-eslint/eslint-plugin": "^2.14.0",
     "@typescript-eslint/parser": "^2.14.0",
     "bull": "^3.12.1",
+    "commander": "^4.1.0",
     "email-regex": "^4.0.0",
     "graphql": "^14.5.8",
     "is-my-date-valid": "^0.1.0",
     "luxon": "^1.21.3",
     "mongodb": "^3.4.1",
+    "pushover-notifications": "^1.2.1",
     "react": "^16.12.0",
     "url-regex": "^5.0.0",
     "validate-color": "^1.0.3"

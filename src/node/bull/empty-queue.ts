@@ -1,6 +1,8 @@
 import Queue from 'bull';
 
-const emptyQueue = async (queueName, redisUrl): void => {
+import { KINGSTINCT_BULL_REDIS_URL } from '../config';
+
+const emptyQueue = async (queueName, redisUrl = KINGSTINCT_BULL_REDIS_URL): Promise<void> => {
   const queue = new Queue(queueName, redisUrl);
 
   await queue.empty();
