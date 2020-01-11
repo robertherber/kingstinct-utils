@@ -11,10 +11,10 @@
   },
   "private": false,
   "scripts": {
-    "release": "yarn build && npm publish lib",
-    "test": "yarn lint && jest src && tsc --noEmit",
+    "prepublishOnly": "npm run lint",
+    "test": "npm run lint && jest src && tsc --noEmit",
     "lint": "eslint ./src/**/*.ts",
-    "build": "rimraf lib && tsc && tsc -p tsconfig.node.json && copy README.md lib && copy yarn.lock lib && copy package.json lib && copy scripts/**/* lib"
+    "build": "rimraf lib && tsc && tsc -p tsconfig.node.json && copy README.md lib && copy yarn.lock lib && copy package.json lib && copy .npmignore lib && copy scripts/**/* lib"
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^3.2.1",
