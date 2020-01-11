@@ -36,6 +36,6 @@ const msg: Message = {
 try {
   pushoverClient(program.user, program.token).sendMessage(msg);
 } catch (error) {
-  console.error(error.message);
+  console.error(error.message); // eslint-disable-line no-console
   process.exit(1);
 }
