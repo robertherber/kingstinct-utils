@@ -1,20 +1,36 @@
 {
   "name": "kingstinct",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Common utils usable across many projects",
   "repository": "https://github.com/robertherber/kingstinct-utils",
   "author": "Robert Herber <robert@herber.me>",
   "license": "MIT",
   "bin": {
     "fix-no-space-left-on-device": "./scripts/docker/fix-no-space-left-on-device.sh",
-    "pushover": "./scripts/pushover-cli.js"
+    "pushover": "./scripts/pushover-cli.js",
+    "eslint-install-peer-dependencies-yarn": "./scripts/eslint-install-peer-dependencies-yarn.sh"
   },
   "private": false,
   "scripts": {
-    "prepublishOnly": "npm run lint",
     "test": "npm run lint && jest src && tsc --noEmit",
-    "lint": "eslint ./src/**/*.ts",
-    "build": "rimraf lib && tsc && tsc -p tsconfig.node.json && copy README.md lib && copy yarn.lock lib && copy package.json lib && copy .npmignore lib && copy scripts/**/* lib"
+    "lint": "npx eslint ./src/**/*.ts",
+    "build": "npm run test && rimraf lib && tsc && tsc -p tsconfig.node.json && copy README.md lib && copy yarn.lock lib && copy package.json lib && copy .npmignore lib && copy scripts/**/* lib && copy eslint/**/* lib/eslint"
+  },
+  "peerDependencies": {
+    "eslint-config-airbnb-typescript": ">=6",
+    "eslint-plugin-import": ">=2",
+    "eslint-plugin-jest": ">=23",
+    "eslint-plugin-json": ">=2",
+    "eslint-plugin-jsx-a11y": ">=6",
+    "eslint-plugin-lodash-fp": ">=2",
+    "eslint-plugin-node": ">=11",
+    "eslint-plugin-promise": ">=4",
+    "eslint-plugin-react": ">=7",
+    "eslint-plugin-react-hooks": ">=2",
+    "eslint-plugin-react-native": ">=3",
+    "@typescript-eslint/eslint-plugin": ">=2",
+    "@typescript-eslint/parser": ">=2",
+    "eslint": ">=6"
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^3.2.1",
@@ -41,24 +57,23 @@
     "typescript": "3"
   },
   "dependencies": {
-    "@types/bull": "^3.10.6",
-    "@types/graphql": "^14.5.0",
-    "@types/lodash": "^4.14.149",
-    "@types/luxon": "^1.21.0",
-    "@types/node": "^13.1.4",
-    "@types/react": "^16.9.17",
-    "@types/timsort": "^0.3.0",
-    "bull": "^3.12.1",
-    "commander": "^4.1.0",
-    "email-regex": "^4.0.0",
-    "graphql": "^14.5.8",
-    "is-my-date-valid": "^0.1.0",
-    "lodash": "^4.17.15",
-    "luxon": "^1.21.3",
-    "mongodb": "^3.4.1",
-    "pushover-notifications": "^1.2.1",
-    "react": "^16.12.0",
-    "url-regex": "^5.0.0",
-    "validate-color": "^1.0.3"
+    "@types/bull": "*",
+    "@types/lodash": "*",
+    "@types/luxon": "*",
+    "@types/node": "*",
+    "@types/react": "*",
+    "@types/timsort": "*",
+    "bull": ">=3",
+    "commander": ">=4",
+    "email-regex": ">=4",
+    "graphql": ">=14",
+    "is-my-date-valid": "*",
+    "lodash": ">=4",
+    "luxon": ">=1",
+    "mongodb": ">=3",
+    "pushover-notifications": "*",
+    "react": ">=16.8",
+    "url-regex": "*",
+    "validate-color": "*"
   }
 }
