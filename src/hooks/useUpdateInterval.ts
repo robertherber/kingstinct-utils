@@ -39,13 +39,14 @@ const useUpdateInterval = <T>(updaterFn: (now: number) => T, ms: number): T => {
   useEffect(() => {
     if (Number.isFinite(ms)) {
       const cb = (now): void => {
-        setValue(updater.current(now));
+        const newValue = updater.current(now);
+        setValue(newValue);
       };
       const unsubscribe = sharedSetInterval(cb, ms);
       return (): void => unsubscribe();
     }
     return (): void => {};
-  }, [ms]);
+  }, [ms, value]);
 
   return value;
 };

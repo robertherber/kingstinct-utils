@@ -33,6 +33,28 @@ test('should have been called 201 times', () => {
   expect(fun.mock.calls.length).toBeLessThanOrEqual(210);
 });
 
+test('should not trigger rerenders outside itself', () => {
+  jest.useFakeTimers();
+
+  const cbFun = jest.fn(() => 5);
+  const otherFunction = jest.fn();
+
+  const useHookWithSpy = (cb, ms) => {
+    const val = useUpdateInterval(cb, ms);
+    return otherFunction(val);
+  };
+
+  renderHook(() => useHookWithSpy(cbFun, 1000));
+
+  act(() => {
+    jest.advanceTimersByTime(50000);
+    jest.clearAllTimers();
+  });
+
+  expect(cbFun.mock.calls.length).toBeGreaterThanOrEqual(5);
+  expect(otherFunction).toHaveBeenCalledTimes(1);
+});
+
 
 test('should be called once on init', () => {
   jest.useFakeTimers();

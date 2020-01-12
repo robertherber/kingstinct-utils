@@ -1,8 +1,8 @@
 import replaceAtIndex from './replaceAtIndex';
 
 function findAndReplace<T>(
-  findPredicate: (T) => boolean,
-  replaceWith: (T | ((T) => T)),
+  findPredicate: (previous: T) => boolean,
+  replaceWith: (T | ((previous: T) => T)),
   array: Array<T>,
 ): Array<T> {
   const index = array.findIndex(findPredicate);

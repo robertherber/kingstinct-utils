@@ -6,7 +6,7 @@ import { flow } from 'lodash/fp';
 
 type FlowFunction = <C, D>(data: C) => D;
 
-export const useCompiledFlow = <T, B>(data: B, ...flowArgs: FlowFunction[]): T => {
+export const useCompiledFlow = <T, B>(data: B, ...flowArgs: Array<FlowFunction>): T => {
   const flowRef = useRef(flow(...flowArgs));
 
   useEffect(() => {

@@ -31,7 +31,7 @@ module.exports = {
       'plugin:jest/recommended'
     ],
     rules: {
-      '@typescript-eslint/array-type': 2,
+      '@typescript-eslint/array-type':[2, { default: 'generic', readonly: 'generic' }],
       '@typescript-eslint/indent': ['error', 2, { VariableDeclarator: { var: 2, let: 2, const: 3 } }],
       '@typescript-eslint/no-extra-parens': 2,
       '@typescript-eslint/no-extra-semi': 2,
