@@ -9,7 +9,6 @@
     "lib": ["dom", "esnext"],
     "outDir": "./lib",
     "allowSyntheticDefaultImports": true,
-    "noEmit": true,
     "skipLibCheck": true,
     "resolveJsonModule": true
   },
