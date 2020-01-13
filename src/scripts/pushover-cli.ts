@@ -33,9 +33,5 @@ const msg: Message = {
   url_title: program.url_title,
 };
 
-try {
-  pushoverClient(program.user, program.token).sendMessage(msg);
-} catch (error) {
-  console.error(error.message); // eslint-disable-line no-console
-  process.exit(1);
-}
+
+pushoverClient(program.user, program.token).sendMessage(msg);

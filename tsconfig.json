@@ -2,15 +2,23 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es5",
+    "moduleResolution": "node",
     "declaration": true,
+    "jsx": "react-native",
+    "types": ["react", "jest", "node"],
+    "lib": ["dom", "esnext"],
     "outDir": "./lib",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true
   },
   "include": [
     "src/**/*"
   ],
   "exclude": [
     "src/node/**/*",
+    "src/scripts/**/*",
     "src/graphql/**/*",
     "*.test.ts"
   ]

@@ -3,12 +3,14 @@
     "module": "commonjs",
     "target": "es5",
     "declaration": true,
+    "types": ["node", "jest"],
     "outDir": "./lib/node",
     "allowSyntheticDefaultImports": true
   },
   "include": [
     "src/node/**/*",
     "src/graphql/**/*",
+    "src/scripts/**/*",
   ],
   "exclude": [
     "*.test.ts"

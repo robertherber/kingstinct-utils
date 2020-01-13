@@ -5,7 +5,10 @@ module.exports = {
       "shared-node-browser": true
     },
     parserOptions: {
-      project: `./tsconfig.json`
+      project: `./tsconfig.json`,
+      ecmaFeatures: {
+          jsx: true
+      }
     },
     plugins: [
       '@typescript-eslint',
