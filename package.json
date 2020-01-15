@@ -1,6 +1,6 @@
 {
   "name": "kingstinct",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Common utils usable across many projects",
   "repository": "https://github.com/robertherber/kingstinct-utils",
   "author": "Robert Herber <robert@herber.me>",
@@ -56,6 +56,9 @@
     "ts-jest": "^24.3.0",
     "typescript": "3"
   },
+  "optionalDependencies": {
+    "validate-color": "*"
+  },
   "dependencies": {
     "@types/bull": "*",
     "@types/lodash": "*",
@@ -70,13 +73,12 @@
     "graphql": ">=14",
     "is-my-date-valid": "*",
     "lodash": ">=4",
-    "lorem-ipsum": "^2.0.3",
+    "lorem-ipsum": "*",
     "luxon": ">=1",
     "mongodb": ">=3",
     "pushover-notifications": "*",
     "react": ">=16.8",
     "react-native": "*",
-    "url-regex": "*",
-    "validate-color": "*"
+    "url-regex": "*"
   }
 }
