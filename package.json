@@ -1,6 +1,6 @@
 {
   "name": "kingstinct",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Common utils usable across many projects",
   "repository": "https://github.com/robertherber/kingstinct-utils",
   "author": "Robert Herber <robert@herber.me>",
@@ -14,7 +14,8 @@
   "scripts": {
     "test": "npm run lint && jest src && tsc --noEmit",
     "lint": "npx eslint ./src/**/*.{ts,tsx}",
-    "build": "npm run test && rimraf lib && tsc && tsc -p tsconfig.node.json && copy README.md lib && copy yarn.lock lib && copy package.json lib && copy .npmignore lib && copy scripts/**/* lib && copy eslint/**/* lib/eslint"
+    "build": "npm run test && rimraf lib && tsc && tsc -p tsconfig.node.json && copy README.md lib && copy yarn.lock lib && copy package.json lib && copy .npmignore lib && copy scripts/**/* lib && copy eslint/**/* lib/eslint",
+    "release": "./publish.sh"
   },
   "peerDependencies": {
     "@typescript-eslint/eslint-plugin": ">=2",
