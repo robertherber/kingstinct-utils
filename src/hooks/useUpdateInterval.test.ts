@@ -1,4 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks';
+import { useState } from 'react';
 
 import useUpdateInterval from './useUpdateInterval';
 
@@ -55,13 +56,37 @@ test('should not trigger rerenders outside itself', () => {
   expect(otherFunction).toHaveBeenCalledTimes(1);
 });
 
-
 test('should be called once on init', () => {
-  jest.useFakeTimers();
-
   const fun = jest.fn((now) => now);
   const { result } = renderHook(() => useUpdateInterval(fun, 1000));
 
   expect(fun).toHaveBeenCalledWith(result.current);
   expect(fun).toHaveBeenCalledTimes(1);
+});
+
+type Updater = (now: number) => number;
+type FnReturningUpdater = () => Updater;
+type CBT = (updater: FnReturningUpdater) => void;
+
+test('should be called when updating function', () => {
+  jest.useFakeTimers();
+  const useHookWithSpy = (initialFn: Updater): [CBT, number] => {
+    const [fun, setFun] = useState(() => initialFn);
+    const val = useUpdateInterval(fun, 100000);
+    return [setFun, val];
+  };
+
+  const newFn = jest.fn(() => 5);
+  const firstFun = jest.fn(() => 15);
+
+
+  const { result } = renderHook(() => useHookWithSpy(firstFun));
+
+  act(() => {
+    const hey = result.current[0];
+    hey(() => newFn);
+  });
+
+  expect(result.current[1]).toEqual(5);
+  expect(newFn).toHaveBeenCalledTimes(1);
 });

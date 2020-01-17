@@ -29,16 +29,21 @@ export const sharedSetInterval = <T>(cb: (now: number) => T, ms: number): Unsubs
 };
 
 const useUpdateInterval = <T>(updaterFn: (now: number) => T, ms: number): T => {
-  const [value, setValue] = useState(updaterFn(Date.now()));
+  const [value, setValue] = useState(() => updaterFn(Date.now())); // Seems to always be a good idea to pass a callback here! Otherwise the code is exectuted every time (obviously when thinking about it)!
   const updater = useRef(updaterFn);
 
   useEffect(() => {
+    if (updater.current !== updaterFn) {
+      const newValue = updaterFn(Date.now());
+      setValue(newValue);
+    }
+
     updater.current = updaterFn;
   }, [updaterFn]);
 
   useEffect(() => {
     if (Number.isFinite(ms)) {
-      const cb = (now): void => {
+      const cb = (now: number): void => {
         const newValue = updater.current(now);
         setValue(newValue);
       };
@@ -46,7 +51,7 @@ const useUpdateInterval = <T>(updaterFn: (now: number) => T, ms: number): T => {
       return (): void => unsubscribe();
     }
     return (): void => {};
-  }, [ms, value]);
+  }, [ms]);
 
   return value;
 };
