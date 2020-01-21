@@ -15,7 +15,7 @@ test('callback should have been called with current time', () => {
   });
 
   expect(result.current).toBeGreaterThan(timeAtStart);
-  expect(result.current).toBeLessThan(Date.now());
+  expect(result.current).toBeLessThanOrEqual(Date.now());
 });
 
 test('should have been called 201 times', () => {
@@ -30,8 +30,8 @@ test('should have been called 201 times', () => {
     jest.clearAllTimers();
   });
 
-  expect(fun.mock.calls.length).toBeGreaterThanOrEqual(201);
-  expect(fun.mock.calls.length).toBeLessThanOrEqual(210);
+  expect(fun.mock.calls.length).toBeGreaterThanOrEqual(200);
+  expect(fun.mock.calls.length).toBeLessThanOrEqual(202);
 });
 
 test('should not trigger rerenders outside itself', () => {

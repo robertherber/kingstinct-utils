@@ -1,4 +1,4 @@
-const config = require('../../.eslintrc.js');
+const config = require('../../../.eslintrc.js');
 
 config.parserOptions.project = './tsconfig.node.json';
 config.parserOptions.sourceType = 'module';

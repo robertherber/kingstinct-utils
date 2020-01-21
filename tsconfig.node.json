@@ -8,9 +8,7 @@
     "allowSyntheticDefaultImports": true
   },
   "include": [
-    "src/node/**/*",
-    "src/graphql/**/*",
-    "src/scripts/**/*",
+    "src/node/**/*"
   ],
   "exclude": [
     "*.test.ts"
