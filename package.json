@@ -7,8 +7,10 @@
   "license": "MIT",
   "bin": {
     "fix-no-space-left-on-device": "./scripts/docker/fix-no-space-left-on-device.sh",
-    "pushover": "./scripts/pushover-cli.js",
-    "eslint-install-peer-dependencies-yarn": "./scripts/eslint/install-peer-dependencies-yarn.sh"
+    "pushover": "./lib/node/scripts/pushover-cli.js",
+    "eslint-install-peer-dependencies-yarn": "./scripts/eslint/install-peer-dependencies-yarn.sh",
+    "eslint-install-peer-dependencies-npm": "./scripts/eslint/install-peer-dependencies-npm.sh",
+    "publish": "./publish.sh"
   },
   "private": false,
   "scripts": {
