@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 
-import pushoverClient, { Message } from '../node/pushover';
+import pushoverClient, { Message } from '../pushover';
 
 const program = require('commander'); // eslint-disable-line @typescript-eslint/no-var-requires
 
