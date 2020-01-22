@@ -1,6 +1,6 @@
 {
   "name": "kingstinct",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "Common utils usable across many projects",
   "repository": "https://github.com/robertherber/kingstinct-utils",
   "author": "Robert Herber <robert@herber.me>",
