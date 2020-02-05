@@ -1,4 +1,4 @@
-import validator from 'is-my-date-valid';
+import * as validator from 'is-my-date-valid';
 
 import ScalarFactory from './utils/ScalarFactory';
 

@@ -1,4 +1,4 @@
-import urlRegex from 'url-regex';
+import * as urlRegex from 'url-regex';
 
 import ScalarFactory from './utils/ScalarFactory';
 

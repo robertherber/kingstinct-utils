@@ -1,4 +1,4 @@
-import EmailRegex from 'email-regex';
+import * as EmailRegex from 'email-regex';
 
 import ScalarFactory from './utils/ScalarFactory';
 

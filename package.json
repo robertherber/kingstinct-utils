@@ -69,6 +69,7 @@
     "@types/react": "*",
     "@types/react-native": "*",
     "@types/timsort": "*",
+    "apollo-server-errors": "^2.3.4",
     "bull": ">=3",
     "commander": ">=4",
     "email-regex": ">=4",
