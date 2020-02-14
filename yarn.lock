@@ -4160,9 +4160,9 @@ is-glob@^4.0.0, is-glob@^4.0.1:
     is-extglob "^2.1.1"
 
 is-my-date-valid@*:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/is-my-date-valid/-/is-my-date-valid-0.1.0.tgz#5f0a2799647cb9cc06b1873c81cf66dd937bb4d6"
-  integrity sha1-XwonmWR8ucwGsYc8gc9m3ZN7tNY=
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/is-my-date-valid/-/is-my-date-valid-0.1.1.tgz#ec630295292b60fd221e4ac7f6e6b5472a4b71f2"
+  integrity sha512-G0DGybXikjkzrE0ngbKmKy47Ss/QMrpbQ8ViXRKxpNHv343o7EzjdtyT1s0CMjyVAoOsnRME6HntfmzVCsm5Hw==
   dependencies:
     moment "^2.12.0"
 
@@ -6313,9 +6313,9 @@ punycode@^2.1.0, punycode@^2.1.1:
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
 pushover-notifications@*:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/pushover-notifications/-/pushover-notifications-1.2.1.tgz#8dcf1fabc26b5cb66a28e09c3121ae476ed6fad7"
-  integrity sha512-FEPbbEhKPDw4PP/e4irEEv1gRmHvt2rulpsvj9OaWTBLWuTf0qBEuaydOsYnQdXS7zq0fAX/ptsj5/BqbKrcUw==
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/pushover-notifications/-/pushover-notifications-1.2.2.tgz#32bd13f862bade346fe84313b695d6c34b84d69c"
+  integrity sha512-+3Xcj+kiMiouZK1Ws8yGBTyl8WMPZZdELgl/iVxYqNwDdlaObBHMhEGPRC6Zb9t0BE27ikOoOqSIO1cKZOtsDA==
 
 qs@~6.5.2:
   version "6.5.2"
