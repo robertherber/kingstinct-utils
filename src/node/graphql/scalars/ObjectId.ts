@@ -1,9 +1,9 @@
-import { GraphQLScalarType } from 'graphql';
+import { GraphQLScalarType, GraphQLScalarTypeConfig } from 'graphql';
 import { Kind } from 'graphql/language';
 import { GraphQLError } from 'graphql/error';
 import { ObjectId } from 'mongodb';
 
-export function isValidMongoDBObjectID(_id): boolean {
+export function isValidMongoDBObjectID(_id: string): boolean {
   // / https://stackoverflow.com/questions/11985228/mongodb-node-check-if-objectid-is-valid
   const id = `${_id}`;
   const len = id.length;
@@ -14,12 +14,12 @@ export function isValidMongoDBObjectID(_id): boolean {
   return valid;
 }
 
-export const GraphQLObjectIdScalar = new GraphQLScalarType({
+const config: GraphQLScalarTypeConfig<ObjectId, string> = {
   name: 'ObjectId',
   description: 'ObjectId is a mongodb ObjectId. String of 12 or 24 hex chars',
 
   // from database towards client
-  serialize(value): string {
+  serialize(value: ObjectId): string {
     const result = value.toString();
     if (!isValidMongoDBObjectID(result)) {
       throw new GraphQLError(`serialize: value: ${value.toString()} is not valid ObjectId`);
@@ -48,6 +48,8 @@ export const GraphQLObjectIdScalar = new GraphQLScalarType({
     const value = ast.value.toString();
     return new ObjectId(value);
   },
-});
+};
+
+export const GraphQLObjectIdScalar = new GraphQLScalarType(config);
 
 export default GraphQLObjectIdScalar;
